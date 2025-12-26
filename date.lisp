@@ -284,7 +284,7 @@ minute  => 0 - 59 minute of day's hour
 second  => 0 - 59 second of day's minute of day's hour
 unrecognised COMPONENT returns 0"
   (multiple-value-bind (seconds minutes hours day month year) (decode-universal-time (seconds date))
-    (case (find date '(:date :day :weekday :week :month :year :hour :minute :second) :test #'string-equal :key #'symbol-name)
+    (case (find component '(:date :day :weekday :week :month :year :hour :minute :second) :test #'string-equal :key #'symbol-name)
       (:date day)
       (:day (day-of-year date))
       (:weekday (1+ (weekday date)))
